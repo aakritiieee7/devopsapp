@@ -18,17 +18,21 @@ A high-fidelity, production-grade academic management ecosystem built with **Nex
 
 ---
 
-## 🚀 DevOps Lifecycle & "Novelty" Implementation
+## 🚀 Standardized 8-Stage DevOps Lifecycle
 
-This project distinguishes itself through advanced implementation of core DevOps stages beyond standard CRUD applications:
+This portal is architected to follow the industry-standard "Infinity Loop" lifecycle:
 
-| Stage | Implementation & "Novelty" Detail | Tech Leveraged |
+| Stage | Implementation Details | Strategic Novelty |
 | :--- | :--- | :--- |
-| **Data Governance** | **IaC (Infrastructure as Code)**: Relational schema management via Prisma, ensuring identical environments across Dev/Prod. | Prisma ORM, PostgreSQL |
-| **SecOps** | **Departmental Secure Vault**: Sensitive files are stored in an unexposed, private directory. Retrieval is managed via a dedicated session-aware API that streams raw binary data only to authorized peers. | Node.js fs, Auth.js v5 |
-| **Quality Assurance** | **Atomic Persistence Engine**: Use of Server Actions with `revalidatePath` to ensure zero-latency state synchronization between Student submissions and Faculty evaluation queues. | Next.js Server Actions |
-| **Industrial UX** | **Brutalist Administrative Aesthetic**: A "No-Placeholders" design language utilizing high-contrast borders and mono-space typography for a professional, "mission-critical" feel. | Tailwind CSS 4.0 |
-| **SCM** | **Branch-Ready Architecture**: Decoupled Client/Server logic optimized for parallel development and CI/CD git-flow. | Git, TypeScript |
+| **1. Plan** | Architectural blueprinting and requirement gathering for academic governance. | Stakeholder-driven UX mapping. |
+| **2. Code** | Developed with **Next.js 15+** and **TypeScript** for type-safe academic records. | Radical "Industrial Console" design. |
+| **3. Build** | Optimized bundling and preparation for containerization. | Multi-stage production builds. |
+| **4. Test** | Unit and integration testing for proxy detection and auth logic. | Automated validation of security headers. |
+| **5. Release** | Tagged versioning and secure artifact storage in the departmental vault. | Secure ID-based artifact mapping. |
+| **6. Deploy** | Automated push to specialized cloud environments (Vercel/Docker). | Zero-downtime revalidation logic. |
+| **7. Operate** | Administrative control hub for real-time registry and file management. | Faculty Evaluation Terminal. |
+| **8. Monitor** | Integrated health-check APIs and proximity-based proxy flagging. | Real-time "Critical Threshold" telemetry. |
+
 
 ---
 
