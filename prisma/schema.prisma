@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String             @id @default(cuid())
+  enrollmentId String?            @unique
+  name         String?
+  email        String?            @unique
+  password     String?
+  role         String             @default("STUDENT")
+  branch       String?
+  semester     String?
+  image        String?
+  proxyFlag    Boolean            @default(false)
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+  assignments  Assignment[]
+  attendance   AttendanceRecord[]
+  marks        Marks[]
+}
+
+model Session {
+  id         String             @id @default(cuid())
+  subject    String
+  startTime  DateTime
+  endTime    DateTime
+  isOpen     Boolean            @default(true)
+  createdAt  DateTime           @default(now())
+  attendance AttendanceRecord[]
+}
+
+model AttendanceRecord {
+  id                  String   @id @default(cuid())
+  userId              String
+  sessionId           String
+  status              String   @default("PRESENT")
+  timestamp           DateTime @default(now())
+  medicalDocUrl       String?
+  justificationStatus String   @default("NONE")
+  session             Session  @relation(fields: [sessionId], references: [id])
+  user                User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, sessionId])
+}
+
+model Assignment {
+  id            String   @id @default(cuid())
+  title         String
+  description   String?
+  subject       String
+  deadline      DateTime
+  status        String   @default("PENDING")
+  userId        String
+  createdAt     DateTime @default(now())
+  feedback      String?
+  grade         String?
+  submissionUrl String?
+  user          User     @relation(fields: [userId], references: [id])
+}
+
+model Marks {
+  id        String   @id @default(cuid())
+  userId    String
+  midTerm   Float?   @default(0)
+  endSem    Float?   @default(0)
+  cap       Float?   @default(0)
+  etip      Float?   @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id])
+}

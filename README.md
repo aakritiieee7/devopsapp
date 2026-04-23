@@ -1,106 +1,74 @@
-# DevOps Attendance App
+# 🛡️ DevOps Attendance & Academic Registry Portal
 
-A production-grade attendance monitoring web application built with Next.js, demonstrating a rigorous adherence to the complete DevOps lifecycle.
+A high-fidelity, production-grade academic management ecosystem built with **Next.js 15+**, meticulously engineered to demonstrate the complete **End-to-End DevOps Lifecycle**. This portal bridges the gap between student self-service and administrative governance with a focus on data integrity, security, and industrial aesthetics.
 
-## 🚀 DevOps Stages Implemented
+---
 
-This project is structured around the core principles of DevOps. Here is a breakdown of the stages currently utilized and where they are applied:
+## 🌟 Key Features
 
-| Stage | Implementation Details | Location in Project |
+### 👨‍🎓 Student Terminal
+- **Dynamic Attendance Feed**: Real-time visualization of attendance metrics with "Critical Threshold" alerts (75% university standard).
+- **Secure Justification Pipeline**: Integrated multi-part upload system for medical and leave justifications.
+- **Coursework Management**: Full lifecycle support for Lab/Assignment submissions, including **Unsubmit & Refine** capabilities.
+
+### 👩‍🏫 Faculty Governance Suite (Admin)
+- **Medical Audit Queue**: Secure document verification interface with session-aware binary streaming.
+- **Evaluation Terminal**: High-performance grading interface for rapid coursework assessment and feedback synthesis.
+- **Student Registry Audit**: Master control hub for student identities, attendance records, and performance tracking.
+
+---
+
+## 🚀 DevOps Lifecycle & "Novelty" Implementation
+
+This project distinguishes itself through advanced implementation of core DevOps stages beyond standard CRUD applications:
+
+| Stage | Implementation & "Novelty" Detail | Tech Leveraged |
 | :--- | :--- | :--- |
-| **1. Planning & Design** | Structured architecture and modular design planning before writing code. Tracking tasks via documentation. | Local `task.md` & `implementation_plan.md` |
-| **2. Source Code Management** | Version control using Git. Codebase is securely stored and versioned on GitHub. | `.git/` folder & [GitHub Repository](https://github.com/arrebhumi/devopsapp) |
-| **3. Continuous Integration (CI)** | Automated pipelines utilizing GitHub Actions. Code is linted and built on every push and pull request to ensure stability. | `.github/workflows/ci.yml` |
-| *4. Containerization (Upcoming)* | Dockerizing the application for consistency across environments. | *Pending* |
-| *5. Continuous Deployment (CD) (Upcoming)* | Automated deployments to a cloud provider. | *Pending* |
-| *6. Monitoring (Upcoming)* | Tracking application health, performance, and user logs. | *Pending* |
+| **Data Governance** | **IaC (Infrastructure as Code)**: Relational schema management via Prisma, ensuring identical environments across Dev/Prod. | Prisma ORM, PostgreSQL |
+| **SecOps** | **Departmental Secure Vault**: Sensitive files are stored in an unexposed, private directory. Retrieval is managed via a dedicated session-aware API that streams raw binary data only to authorized peers. | Node.js fs, Auth.js v5 |
+| **Quality Assurance** | **Atomic Persistence Engine**: Use of Server Actions with `revalidatePath` to ensure zero-latency state synchronization between Student submissions and Faculty evaluation queues. | Next.js Server Actions |
+| **Industrial UX** | **Brutalist Administrative Aesthetic**: A "No-Placeholders" design language utilizing high-contrast borders and mono-space typography for a professional, "mission-critical" feel. | Tailwind CSS 4.0 |
+| **SCM** | **Branch-Ready Architecture**: Decoupled Client/Server logic optimized for parallel development and CI/CD git-flow. | Git, TypeScript |
 
-## 🛠️ Setup & Initialization History
+---
 
-The following steps and commands were used to reach the current state of the repository. This serves as an audit trail for the project's foundation.
+## 🛠️ The Technical Stack
 
-### 1. Initializing the Application
-The core framework was scaffolded using the Next.js CLI with modern defaults (TypeScript, Tailwind CSS, ESLint, App Router).
+- **Core Framework**: Next.js 15 (App Router) + React 19
+- **Database Engine**: Prisma ORM with SQLite (Development) / PostgreSQL (Production)
+- **Security Layer**: Auth.js v5 (NextAuth) with Role-Based Access Control (RBAC)
+- **Industrial Styling**: Tailwind CSS 4.0 & Lucide Engineering Icons
+- **Persistence Layer**: Local Secure Filesystem Storage with Binary Stream APIs
+
+---
+
+## 💻 Technical Excellence: Secure Vault Architecture
+
+Unlike standard apps that expose user uploads in public directories, this system implements a **Secure Virtual Pathing** strategy:
+
+1. **Isolation**: Files are saved in `/storage/uploads/`, outside the public web root.
+2. **Obfuscation**: Filenames are sanitized and unique-indexed (`${recordId}-${filename}`).
+3. **Session Filtering**: The `/api/docs/[id]` endpoint intercepts all requests, confirming the user's role and identity before streaming fragments of the file buffer to the browser.
+
+---
+
+## 🏁 Getting Started
+
+### 1. Install Dependencies
 ```bash
-npx -y create-next-app@latest devopsapp --typescript --tailwind --eslint --app --src-dir --import-alias "@/*" --yes
+npm install
 ```
 
-### 2. Setting Up Continuous Integration
-A GitHub Actions workflow was created at `.github/workflows/ci.yml` to automatically verify the build and enforce code quality (linting) on every push.
-```yaml
-name: CI
-
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    
-    - name: Use Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20.x'
-        cache: 'npm'
-        
-    - name: Install dependencies
-      run: npm ci
-      
-    - name: Build Next.js app
-      run: npm run build
-      
-    - name: Run tests
-      run: npm test --if-present
-      
-    - name: Lint code
-      run: npm run lint
-```
-
-### 3. Setting Up Source Code Management & Pushing to Remote
-The local folder was initialized as a Git repository, the files were committed, mapped to the remote GitHub account, and pushed to the `main` branch. This push triggered the first CI pipeline run.
+### 2. Provision Database & Seed Data
 ```bash
-cd devopsapp
-git init
-git add .
-git commit -m "Initial commit with Next.js and CI setup"
-git branch -M main
-git remote add origin https://github.com/arrebhumi/devopsapp.git
-git push -u origin main
+npx prisma db push
+npx tsx prisma/seed.ts
 ```
 
-## 💻 Running the Application Locally
+### 3. Launch Development Environment
+```bash
+npm run dev
+```
 
-Follow these instructions to run the application on your local machine for development.
-
-### Prerequisites
-- Node.js (v18.x or newer)
-- npm (Node Package Manager)
-
-### Commands
-
-1. **Install Dependencies:**
-   Ensure all packages are installed correctly. (This was done automatically during setup, but is good practice when pulling fresh code).
-   ```bash
-   npm install
-   ```
-
-2. **Start the Development Server:**
-   Run the local server with hot-reloading.
-   ```bash
-   npm run dev
-   ```
-
-3. **View the App:**
-   Open your browser and navigate to [http://localhost:3000](http://localhost:3000).
-
-4. **Build for Production:**
-   To verify the production build locally.
-   ```bash
-   npm run build
-   npm run start
-   ```
+---
+*Developed as a premium demonstration of the DevOps methodology in modern web engineering.*
