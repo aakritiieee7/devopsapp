@@ -56,23 +56,41 @@ Unlike standard apps that expose user uploads in public directories, this system
 
 ---
 
-## 🏁 Getting Started
+## ⚙️ DevOps Automation Scripts
 
-### 1. Install Dependencies
+The portal includes specialized automation scripts to manage the lifecycle stages:
+
+- **Stage 4 (Test)**: `npm test` - Executes Vitest security hubs and proxy detection logic.
+- **Stage 5 (Release)**: `./scripts/release.sh` - Generates release manifests and maps artifacts to the secure departmental vault.
+- **Stage 6 (Deploy)**: `./scripts/deploy.sh` - Performs production validation and initiates cloud rollout.
+
+---
+
+## 🏁 Operational Commands
+
+### 1. Initialize Environment
 ```bash
 npm install
-```
-
-### 2. Provision Database & Seed Data
-```bash
 npx prisma db push
-npx tsx prisma/seed.ts
+npx tsx prisma/seed.ts  # Default accounts: admin@example.com / Aakr0007
 ```
 
-### 3. Launch Development Environment
+### 2. Validation & Testing
 ```bash
-npm run dev
+npm run lint
+npm test
+```
+
+### 3. Production Lifecycle
+```bash
+# Generate secure release mapping
+chmod +x ./scripts/release.sh
+./scripts/release.sh
+
+# Deploy to Vercel/Docker
+chmod +x ./scripts/deploy.sh
+./scripts/deploy.sh
 ```
 
 ---
-*Developed as a premium demonstration of the DevOps methodology in modern web engineering.*
+*Developed as a high-fidelity demonstration of the DevOps methodology in modern web engineering.*
