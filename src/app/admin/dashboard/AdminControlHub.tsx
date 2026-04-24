@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import ApprovalsClient from "./ApprovalsClient";
 import StudentDirectoryClient from "./StudentDirectoryClient";
 import CourseEvalClient from "./CourseEvalClient";
+import SystemTelemetryClient from "./SystemTelemetryClient";
 
 export default function AdminControlHub({ 
   initialStudents, 
@@ -64,7 +65,18 @@ export default function AdminControlHub({
               : "text-gray-400 hover:bg-gray-900 hover:text-white border border-transparent"
             }`}
           >
-            <CheckSquare className="w-4 h-4" /> Submission Eval
+            <CheckSquare className="w-4 h-4" /> Course Evaluation
+          </button>
+
+          <button 
+            onClick={() => setActiveTab('telemetry' as any)}
+            className={`flex items-center gap-3 px-5 py-4 font-black text-xs uppercase tracking-widest transition-all ${
+              activeTab === 'telemetry' as any
+              ? "bg-indigo-600 text-white shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] translate-x-[-2px] translate-y-[-2px]" 
+              : "text-gray-400 hover:bg-gray-900 hover:text-white border border-transparent"
+            }`}
+          >
+            <RefreshCw className="w-4 h-4" /> System Health
           </button>
         </nav>
 
@@ -97,7 +109,7 @@ export default function AdminControlHub({
                 onClick={() => { router.refresh(); }}
                 className="flex items-center gap-1.5 px-3 py-1 bg-white border border-gray-900 text-[9px] font-black uppercase hover:bg-gray-100 transition-all active:scale-95 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
               >
-                <RefreshCw className="w-3 h-3 text-indigo-600" /> Force Sync
+                <RefreshCw className="w-3 h-3 text-indigo-600" /> Refresh Data
               </button>
             </div>
           </div>
@@ -132,6 +144,10 @@ export default function AdminControlHub({
 
           {activeTab === 'coursework' && (
              <CourseEvalClient submissions={initialSubmissions} />
+          )}
+
+          {activeTab === ('telemetry' as any) && (
+             <SystemTelemetryClient />
           )}
         </div>
       </main>

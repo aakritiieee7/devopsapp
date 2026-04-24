@@ -22,16 +22,16 @@ A high-fidelity, production-grade academic management ecosystem built with **Nex
 
 This portal is architected to follow the industry-standard "Infinity Loop" lifecycle:
 
-| Stage | Implementation Details | Strategic Novelty |
+| Stage | Implementation Details | Key Innovation |
 | :--- | :--- | :--- |
-| **1. Plan** | Architectural blueprinting and requirement gathering for academic governance. | Stakeholder-driven UX mapping. |
-| **2. Code** | Developed with **Next.js 15+** and **TypeScript** for type-safe academic records. | Radical "Industrial Console" design. |
-| **3. Build** | Optimized bundling and preparation for containerization. | Multi-stage production builds. |
-| **4. Test** | Unit and integration testing for proxy detection and auth logic. | Automated validation of security headers. |
-| **5. Release** | Tagged versioning and secure artifact storage in the departmental vault. | Secure ID-based artifact mapping. |
-| **6. Deploy** | Automated push to specialized cloud environments (Vercel/Docker). | Zero-downtime revalidation logic. |
-| **7. Operate** | Administrative control hub for real-time registry and file management. | Faculty Evaluation Terminal. |
-| **8. Monitor** | Integrated health-check APIs and proximity-based proxy flagging. | Real-time "Critical Threshold" telemetry. |
+| **1. Plan** | Architectural design and requirement analysis for academic governance. | User-centric UX mapping. |
+| **2. Code** | Developed with **Next.js 16** and **TypeScript** for type-safe records. | Professional industrial design. |
+| **3. Build** | Optimized bundling and containerization readiness. | Multi-stage production builds. |
+| **4. Test** | Unit and integration testing for security and authentication logic. | Automated security validation. |
+| **5. Release** | Managed versioning and secure artifact storage in a protected vault. | ID-based artifact mapping. |
+| **6. Deploy** | Automated deployment to cloud environments (Vercel/Docker). | High-availability logic. |
+| **7. Operate** | Administrative hub for real-time registry and file management. | Faculty Evaluation Interface. |
+| **8. Monitor** | Integrated health-check APIs and security flagging system. | Proactive monitoring metrics. |
 
 
 ---
