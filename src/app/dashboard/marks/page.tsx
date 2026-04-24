@@ -20,7 +20,7 @@ export default async function MarksPage() {
     redirect("/api/auth/signout?callbackUrl=/login");
   }
 
-  const marks = user.marks && user.marks.length > 0 ? user.marks[0] : null;
+  const marks: any = user.marks && user.marks.length > 0 ? user.marks[0] : null;
 
   let totalScore = 0;
   let grade = "N/A";

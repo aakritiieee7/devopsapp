@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { User, Lock, Loader2, ShieldCheck, Activity, Mail, Fingerprint, BookOpen } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { sendOtp, verifyOtpAndRegister } from "../auth-actions";
+import { sendOtp, verifyOtpAndRegister } from "@/actions/auth";
 
 export default function RegisterPage() {
   const router = useRouter();

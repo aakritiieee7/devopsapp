@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { FileCheck, Star, MessageSquare, Save, X, ExternalLink, Search, Filter, Book } from "lucide-react";
-import { gradeAssignment } from "../adminActions";
+import { gradeAssignment } from "@/actions/admin";
 
 export default function CourseEvalClient({ submissions }: { submissions: any[] }) {
   const [evaluating, setEvaluating] = useState<any | null>(null);

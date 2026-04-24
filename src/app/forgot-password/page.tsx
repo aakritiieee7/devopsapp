@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Lock, Loader2, ShieldCheck, Activity, Mail, RefreshCw } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { sendOtp, verifyOtpAndResetPassword } from "../auth-actions";
+import { sendOtp, verifyOtpAndResetPassword } from "@/actions/auth";
 
 export default function ForgotPasswordPage() {
   const router = useRouter();

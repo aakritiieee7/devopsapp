@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { Search, Edit3, ShieldAlert, Save, X, Activity, Filter, ArrowUpDown, Download } from "lucide-react";
-import { updateStudentProfile, toggleProxyFlag } from "../adminActions";
+import { updateStudentProfile, toggleProxyFlag } from "@/actions/admin";
 
 export default function StudentDirectoryClient({ students }: { students: any[] }) {
   const [search, setSearch] = useState("");

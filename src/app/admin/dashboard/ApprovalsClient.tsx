@@ -1,7 +1,7 @@
 "use client";
 
 import { FileText, CheckCircle, XCircle, ExternalLink, Search, Calendar, Filter } from "lucide-react";
-import { approveMedical, rejectMedical } from "../adminActions";
+import { approveMedical, rejectMedical } from "@/actions/admin";
 import { useState, useMemo } from "react";
 
 export default function ApprovalsClient({ pendingDocs }: { pendingDocs: any[] }) {

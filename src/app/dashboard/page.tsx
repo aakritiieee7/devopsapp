@@ -49,7 +49,7 @@ export default async function DashboardOverview() {
   const totalSessions = user.attendance ? user.attendance.length : 0;
   const presentCount = user.attendance ? user.attendance.filter((a: any) => a.status === "PRESENT").length : 0;
   const attendanceRate = totalSessions > 0 ? (presentCount / totalSessions) * 100 : 0;
-  const marks = user.marks && user.marks.length > 0 ? user.marks[0] : null;
+  const marks: any = user.marks && user.marks.length > 0 ? user.marks[0] : null;
   const totalScore = marks ? ((marks.midTerm || 0) / 2) + (marks.endSem || 0) + (marks.cap || 0) + (marks.etip || 0) : 0;
 
   return (
@@ -230,7 +230,7 @@ export default async function DashboardOverview() {
           </div>
           {user.assignments.length > 0 ? (
             <ul className="space-y-3">
-              {user.assignments.slice(0, 3).map((a: Assignment) => (
+              {user.assignments.slice(0, 3).map((a: any) => (
                 <li key={a.id} className="border-b border-gray-100 pb-2 last:border-0 last:pb-0">
                   <Link href="/dashboard/coursework" className="flex flex-col hover:bg-gray-50 p-2 -mx-2 transition-colors rounded-sm group">
                     <span className="font-semibold text-gray-800 text-sm group-hover:text-indigo-700 transition-colors flex items-center justify-between">

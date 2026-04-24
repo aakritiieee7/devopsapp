@@ -36,7 +36,7 @@ export default function FileAttachClient({ assignmentId, isSubmitted }: { assign
     }
     
     try {
-      const { submitAssignment } = await import("../actions");
+      const { submitAssignment } = await import("@/actions/student");
       // Use the last attached file for the actual DB submission in this demo
       // In real prod, we could handle multiple
       const formData = new FormData();
@@ -64,7 +64,7 @@ export default function FileAttachClient({ assignmentId, isSubmitted }: { assign
   const handleUnsubmit = async () => {
     if(confirm("Are you sure you want to unsubmit? This will pull the record from the professor's queue.")) {
        try {
-         const { unsubmitAssignment } = await import("../actions");
+         const { unsubmitAssignment } = await import("@/actions/student");
          await unsubmitAssignment(assignmentId);
          setInternalSubmitted(false);
        } catch (err) { console.error(err); }

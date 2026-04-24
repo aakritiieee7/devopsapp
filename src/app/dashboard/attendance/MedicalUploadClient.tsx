@@ -16,7 +16,7 @@ export default function MedicalUploadClient({ recordId, initialStatus }: { recor
       if (target.files && target.files.length > 0) {
         const file = target.files[0];
         try {
-          const { submitJustification } = await import("./attendanceActions");
+          const { submitJustification } = await import("@/actions/attendance");
           const formData = new FormData();
           formData.append("file", file);
           await submitJustification(recordId, formData);

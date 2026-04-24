@@ -15,7 +15,7 @@ export default async function AdminDashboard() {
   }
 
   // 1. Fetch Students
-  let students = [];
+  let students: any[] = [];
   try {
     students = await prisma.user.findMany({
       where: { role: "STUDENT" },
@@ -28,7 +28,7 @@ export default async function AdminDashboard() {
   } catch (e) { console.error(e); }
 
   // 2. Fetch Medical Docs
-  let medicalDocs = [];
+  let medicalDocs: any[] = [];
   try {
     medicalDocs = await prisma.attendanceRecord.findMany({
       where: { justificationStatus: { not: "NONE" } } as any,
@@ -40,7 +40,7 @@ export default async function AdminDashboard() {
   }
 
   // 3. Fetch Assignments for Eval
-  let submissions = [];
+  let submissions: any[] = [];
   try {
     submissions = await prisma.assignment.findMany({
       where: { status: { in: ["SUBMITTED", "GRADED"] } } as any,

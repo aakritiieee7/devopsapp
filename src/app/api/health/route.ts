@@ -6,13 +6,22 @@ export async function GET() {
     // Check DB connection
     await prisma.$queryRaw`SELECT 1`;
     
+    // Monitor Stage 8: Critical Threshold Telemetry
+    const proxyCount = await prisma.user.count({ where: { proxyFlag: true } });
+    const healthStatus = proxyCount > 10 ? "critical" : "healthy";
+    
     return NextResponse.json({
-      status: "healthy",
+      status: healthStatus,
       timestamp: new Date().toISOString(),
       version: "1.0.4-devops",
       services: {
         database: "connected",
         api: "operational"
+      },
+      telemetry: {
+        proxyFlags: proxyCount,
+        threshold: 10,
+        cluster: "industrial-governance-01"
       }
     });
   } catch (error) {
