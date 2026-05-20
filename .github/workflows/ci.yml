@@ -1,8 +1,11 @@
 name: DevOps CI/CD Pipeline
 
 on:
+  workflow_dispatch:
+
   push:
     branches: [ "main" ]
+
   pull_request:
     branches: [ "main" ]
 
